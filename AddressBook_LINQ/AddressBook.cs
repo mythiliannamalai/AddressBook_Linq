@@ -20,7 +20,7 @@ namespace AddressBook_LINQ
             dataTable.Columns.Add("PhoneNumber", typeof(long));
             dataTable.Columns.Add("Email", typeof(string));
         }
-        //UC-1 Add contact
+        //UC-1 && 2 && 3 Add contact
         public void AddContact()
         {
             dataTable.Rows.Add("Mythili", "Annamalai", "nadu st", "salem", "tamilnadu",636002,9600474622,"mythili@gmail.com");
@@ -30,7 +30,7 @@ namespace AddressBook_LINQ
             dataTable.Rows.Add("Santhosh", "Annamalai", "jj st", "salem", "tamilnadu", 636002, 9600474626, "santhosh@gmail.com");
             Console.WriteLine("Contact is Added in Address Book ");
         }
-        //UC-2 Display contact
+        //display
         public void DisplayContacts()
         {
             foreach (var contact in dataTable.AsEnumerable())
@@ -45,7 +45,7 @@ namespace AddressBook_LINQ
                 Console.WriteLine("Email:-" + contact.Field<string>("Email"));                
             }
         }
-        //UC-3 Edit contact
+        //UC-4 Edit contact
         public void EditContact()
         {
             var contacts = dataTable.AsEnumerable().Where(x => x.Field<string>("FirstName") == "Mythili");
@@ -63,6 +63,24 @@ namespace AddressBook_LINQ
                     contact.SetField("Email", "mythili@gmail.com");
                 }
                 Console.WriteLine("Contact is Changed Successfully");
+            }
+            else
+            {
+                Console.WriteLine("Contact Does not Found!");
+            }
+        }
+        //UC-5 Delete contact
+        public void RemoveContact()
+        {
+            var contact = dataTable.AsEnumerable().Where(x => x.Field<string>("FirstName") == "Aniket");
+            int count = contact.Count();
+            if (count > 0)
+            {
+                foreach (var row in contact.ToList())
+                {
+                    row.Delete();
+                    Console.WriteLine("Contact Is Deleted Successfully");
+                }
             }
             else
             {
