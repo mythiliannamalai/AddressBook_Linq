@@ -104,13 +104,21 @@ namespace AddressBook_LINQ
                     Console.WriteLine("ZipCode:-" + contact.Field<int>("Zip"));
                     Console.WriteLine("PhoneNumber:-" + contact.Field<long>("PhoneNumber"));
                     Console.WriteLine("Email:-" + contact.Field<string>("Email"));
-                    Console.WriteLine();
+                    
                 }
             }
             else
             {
                 Console.WriteLine("Contact Does not Found!");
             }
+        }
+        //UC-7 get contact city count
+        public void CountContactByUsingCity()
+        {
+            var contacts = dataTable.AsEnumerable().Where(x => x.Field<string>("City") == "salem");
+            int count = contacts.Count();
+            Console.WriteLine("City count");
+            Console.WriteLine(count);
         }
     }
 }
