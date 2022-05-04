@@ -12,7 +12,8 @@ namespace AddressBook_LINQ
             int option = 0;
             do
             {
-                Console.WriteLine("1: For Add the Contact");               
+                Console.WriteLine("\n1: For Add the Contact");
+                Console.WriteLine("2: For Display Contact");
                 Console.WriteLine("0: For Exist");
                 Console.WriteLine("Enter your option :");
                 option = int.Parse(Console.ReadLine());
@@ -20,7 +21,10 @@ namespace AddressBook_LINQ
                 {
                     case 1:
                         addressbook.AddContact();
-                        break;                    
+                        break;
+                    case 2:
+                        addressbook.DisplayContacts();
+                        break;
                     case 0:
                         Console.WriteLine("Exit");
                         break;
